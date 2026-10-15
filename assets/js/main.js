@@ -150,8 +150,11 @@
     document.querySelectorAll('[data-filter]').forEach(a => a.addEventListener('click', () => setFilter(a.dataset.filter)));
     render();
     // deep links: #featured-<panel>, #publications-<filter>
-    const h = location.hash.slice(1), mf = h.match(/^featured-(\w+)$/), mp = h.match(/^publications-(\w+)$/);
-    if (mf) { showPanel(mf[1]); document.getElementById('featured').scrollIntoView(); }
-    if (mp) { setFilter(mp[1]); document.getElementById('publications').scrollIntoView(); }
+    const applyHash = () => {
+      const h = location.hash.slice(1), mf = h.match(/^featured-(\w+)$/), mp = h.match(/^publications-(\w+)$/);
+      if (mf) { showPanel(mf[1]); document.getElementById('featured').scrollIntoView(); }
+      if (mp) { setFilter(mp[1]); document.getElementById('publications').scrollIntoView(); }
+    };
+    applyHash(); window.addEventListener('hashchange', applyHash);
   }
 })();

@@ -110,7 +110,7 @@
     <div class="tabs" role="tablist" id="featTabs">
       <button class="tab" role="tab" aria-selected="true" data-panel="egoargus"><b>EgoArgus</b><small>EMNLP 2026 · Which modality to trust?</small></button>
       <button class="tab" role="tab" aria-selected="false" data-panel="vdar"><b>VDAR-Router</b><small>EMNLP 2026 Findings · Route by difficulty</small></button>
-      <button class="tab" role="tab" aria-selected="false" data-panel="personaedit"><b>PersonaEdit</b><small>EMNLP 2026 Findings · Edit, don't retrieve</small></button>
+      <button class="tab" role="tab" aria-selected="false" data-panel="personaedit"><b>PersonaEdit</b><small>EMNLP 2026 Findings · Edit the model per user</small></button>
       <button class="tab" role="tab" aria-selected="false" data-panel="mathedu"><b>MathEDU</b><small>EACL 2026 · Feedback on every step</small></button>
       <button class="tab" role="tab" aria-selected="false" data-panel="refute"><b>RefuteClaim</b><small>WWW 2024 · Name the flaw</small></button>
     </div>
@@ -169,12 +169,12 @@
       <div>
         <span class="venue">EMNLP 2026 · Findings</span>
         <h3>PersonaEdit: Representative Sample Selection for Personalized Model Editing</h3>
-        <p class="q">A user has told the model hundreds of things about themselves. Which few should be written into its weights?</p>
-        <p>Retrieval-based personalization depends on retrieval quality and degrades over long-term interactions. Model editing writes new knowledge directly into the parameters, but editing every user sample is costly and the edits interfere with each other. PersonaEdit clusters the hidden representations of a user's data and picks representative samples by proportional stratified sampling.</p>
+        <p class="q">Can a model be personalized by editing its parameters, and how few of a user's samples does it take?</p>
+        <p>Personalization usually lives in the prompt: user history is retrieved and re-supplied at every query, so it depends on retrieval quality and fades over long interactions. PersonaEdit takes a different route and writes a user's preferences into the model's parameters with model editing, so the model carries the user instead of being reminded of them. Editing every sample is costly and the edits interfere, so PersonaEdit clusters the hidden representations of the user's data and picks representative samples by proportional stratified sampling.</p>
         <div class="kv">
-          <div><b>Problem</b>Scaling model editing to personalization: many edits cost more and interfere.</div>
-          <div><b>Idea</b>Cluster hidden representations, then sample representatives in proportion to each cluster's size.</div>
-          <div><b>Finding</b>Model editing is an effective route to personalization when the editing samples are chosen well.</div>
+          <div><b>Problem</b>Make personalization persistent by editing the model, without editing hundreds of samples per user.</div>
+          <div><b>Idea</b>Cluster the user's data in hidden space, then sample representatives in proportion to each cluster's size.</div>
+          <div><b>Finding</b>The edited model matches or beats retrieval and prompt baselines, a small representative set keeps most of the gain, and adding retrieval on top of editing helps further.</div>
         </div>
         <div class="links"><a class="btn btn-primary" href="https://arxiv.org/abs/2608.27816" target="_blank" rel="noopener">Read the paper</a></div>
       </div>
